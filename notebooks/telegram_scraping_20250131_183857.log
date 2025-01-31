@@ -1,0 +1,81 @@
+2025-01-31 18:39:15,314 - INFO - Starting Telegram scraping process
+2025-01-31 18:39:15,315 - INFO - Authenticating with Telegram API
+2025-01-31 18:39:15,315 - CRITICAL - Unexpected error occurred during scraping
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\4071051019.py", line 7, in <module>
+    client.start(phone_number)
+    ^^^^^^
+NameError: name 'client' is not defined
+2025-01-31 18:39:15,320 - INFO - Cleaning up resources
+2025-01-31 18:40:32,861 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-01-31 18:40:32,861 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-01-31 18:40:34,715 - INFO - Starting Telegram scraping process
+2025-01-31 18:40:34,715 - INFO - Authenticating with Telegram API
+2025-01-31 18:40:34,730 - INFO - Starting to scrape channel: DoctorsET
+2025-01-31 18:40:34,730 - ERROR - Error while scraping DoctorsET: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\2444384123.py", line 31, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:34,730 - INFO - Starting to scrape channel: Chemed
+2025-01-31 18:40:34,730 - ERROR - Error while scraping Chemed: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\2444384123.py", line 31, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:34,730 - INFO - Starting to scrape channel: lobelia4cosmetics
+2025-01-31 18:40:34,730 - ERROR - Error while scraping lobelia4cosmetics: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\2444384123.py", line 31, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:34,730 - INFO - Starting to scrape channel: yetenaweg
+2025-01-31 18:40:34,730 - ERROR - Error while scraping yetenaweg: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\2444384123.py", line 31, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:34,730 - INFO - Starting to scrape channel: EAHCI
+2025-01-31 18:40:34,730 - ERROR - Error while scraping EAHCI: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\2444384123.py", line 31, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:34,730 - INFO - Scraping process completed successfully
+2025-01-31 18:40:34,730 - INFO - Cleaning up resources
+2025-01-31 18:40:59,171 - ERROR - Error processing channel DoctorsET: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\3269271251.py", line 30, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:59,171 - ERROR - Error processing channel Chemed: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\3269271251.py", line 30, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:59,172 - ERROR - Error processing channel lobelia4cosmetics: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\3269271251.py", line 30, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:59,172 - ERROR - Error processing channel yetenaweg: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\3269271251.py", line 30, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:59,173 - ERROR - Error processing channel EAHCI: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+Traceback (most recent call last):
+  File "C:\Users\HP 830 G6\AppData\Local\Temp\ipykernel_15980\3269271251.py", line 30, in <module>
+    messages = client(GetHistoryRequest(peer=channel, limit=500))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: GetHistoryRequest.__init__() missing 6 required positional arguments: 'offset_id', 'offset_date', 'add_offset', 'max_id', 'min_id', and 'hash'
+2025-01-31 18:40:59,193 - INFO - Not disconnecting (already have no connection)

@@ -1,0 +1,11 @@
+my_project:
+  outputs:
+    dev:
+      type: postgres # Database type
+      host: localhost
+      port: 5432
+      user: postgres
+      password: "+251985535012"
+      dbname: medical_warehouse
+      schema: public
+  target: dev
