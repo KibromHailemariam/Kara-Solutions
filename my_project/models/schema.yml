@@ -1,7 +1,0 @@
-# models/schema.yml
-version: 2
-
-sources:
-  - name: raw
-    tables:
-      - name: telegram_raw_data

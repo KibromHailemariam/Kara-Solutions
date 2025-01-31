@@ -1,59 +1,75 @@
-# Task 2 - Data Cleaning and Transformation
+# Task 1 - Data Scraping and Collection Pipeline
 
-## Data Cleaning
+## 1. Telegram Scraping
 
-### Removing Duplicates
-- Identify and remove any duplicate entries in the dataset to ensure data integrity.
+Utilize the Telegram API or write custom scripts to extract data from public Telegram channels relevant to Ethiopian medical businesses.
 
-### Handling Missing Values
-- Decide on strategies for dealing with missing data, such as imputation, deletion, or flagging for further investigation.
+### Target Telegram Channels:
 
-### Standardizing Formats
-- Ensure that all data is in a consistent format, particularly for dates, times, and categorical variables.
+- [DoctorsET](https://t.me/DoctorsET)
+- Chemed Telegram Channel
+- [Lobelia for Cosmetics](https://t.me/lobelia4cosmetics)
+- [Yetena Weg](https://t.me/yetenaweg)
+- [EAHCI](https://t.me/EAHCI)
+- More channels from: [TGStat Medicine](https://et.tgstat.com/medicine)
 
-### Data Validation
-- Validate data against expected formats and ranges to catch anomalies or errors.
+---
 
-### Storing Cleaned Data
-- After cleaning, save the data in an appropriate format or database for further processing.
+## 2. Image Scraping for Object Detection
 
-#### Database Storage
-- Use a database system to store cleaned data efficiently, allowing for easier querying and transformation.
+Collect images from the following Telegram channels for object detection:
 
-## DBT for Data Transformation
+- Chemed Telegram Channel
+- [Lobelia for Cosmetics](https://t.me/lobelia4cosmetics)
 
-### Setting Up DBT
-- **Install DBT**: Install the Data Build Tool for managing data transformations:
-  pip install dbt
+---
 
-- **Initialize DBT Project**:
-  dbt init my_project
+## 3. Steps for Scraping
 
-### Defining Models
-- Create DBT models for data transformation. DBT models are SQL files that define transformations on your data.
+### **Step 1: Install Required Python Packages**
 
-- **Run DBT Models**: 
-  dbt run
+Use the following Python packages for data extraction:
 
-### Testing and Documentation
-- Use DBT’s testing and documentation features to ensure data quality and provide context for the transformations.
+```bash
+pip install telethon
+```
 
-- **Run Tests**:
-  ```
-  dbt test
-  ```
+---
 
-- **Generate Documentation**:
-  ```
-  dbt docs generate
-  ```
+### **Step 2: Develop Telegram Data Extraction Scripts**
 
-- **Serve Documentation**:
-  ```
-  dbt docs serve
-  ```
+- Use **Telethon** to extract messages, images, and other relevant data.
+- Alternatively, export content using the Telegram application.
 
-## Monitoring and Logging
+---
 
-### Logging
-- Implement logging to track the scraping process, capture errors, and monitor progress.
+### **Step 3: Storing Raw Data**
+
+- **Initial Storage**: Store the raw scraped data in a temporary location before further processing.
+  - Options: Local database (SQLite, PostgreSQL) or files (CSV, JSON).
+
+---
+
+### **Step 4: Monitoring and Logging**
+
+- **Logging**: Implement logging to track the scraping process, capture errors, and monitor progress.
+- Example logging setup in Python:
+
+```python
+import logging
+
+logging.basicConfig(filename="scraper.log", level=logging.INFO,
+                    format="%(asctime)s - %(levelname)s - %(message)s")
+
+logging.info("Scraping started...")
+```
+
+---
+
+## **Next Steps**
+
+- Data Cleaning & Processing
+- Data Analysis & Insights Extraction
+- Object Detection Model Training (for images)
+
+---
