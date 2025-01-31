@@ -1,150 +1,194 @@
-# Task 2 - Data Cleaning and Transformation
 
-## # 1. Data Cleaning
 
-Data cleaning is a critical step in ensuring the quality and consistency of your data before performing any transformations. Below are the key cleaning processes:
+# Data Scraping, Cleaning, and Transformation
 
-### # 1.1. Removing Duplicates
+## # Task 1 - Data Scraping and Collection Pipeline
 
-Ensure that there are no duplicate entries in your dataset, which could skew analysis or cause redundancy.
+### # 1.1. Telegram Scraping
 
-- Use Python libraries like **Pandas** to remove duplicates.
+Utilize the Telegram API or write custom scripts to extract data from public Telegram channels relevant to Ethiopian medical businesses.
 
-  ```python
-  df.drop_duplicates(inplace=True)
-  ```
+**Channels to scrape:**
+- [DoctorsET](https://t.me/DoctorsET)
+- Chemed Telegram Channel
+- [lobelia4cosmetics](https://t.me/lobelia4cosmetics)
+- [yetenaweg](https://t.me/yetenaweg)
+- [EAHCI](https://t.me/EAHCI)
+- Additional channels from [TGStat - Medicine](https://et.tgstat.com/medicine)
 
-### # 1.2. Handling Missing Values
+**Steps:**
+1. **Install Required Libraries**:
+   - Install `telethon` for scraping Telegram data.
 
-Handling missing values is essential to avoid data inconsistencies.
+   ```bash
+   pip install telethon
+   ```
 
-- You can fill missing values with appropriate methods like imputation or simply drop the rows with missing values.
+2. **Telegram Authentication**:
+   - Use the **Telethon** library to authenticate with the Telegram API.
 
-  ```python
-  df.fillna(value=0, inplace=True)  # Imputation
-  df.dropna(inplace=True)  # Drop rows with missing values
-  ```
+   ```python
+   from telethon import TelegramClient
 
-### # 1.3. Standardizing Formats
+   api_id = 'your_api_id'
+   api_hash = 'your_api_hash'
+   phone_number = 'your_phone_number'
+   client = TelegramClient('session_name', api_id, api_hash)
 
-Ensure that all data follows a consistent format (e.g., date formats, text case).
+   await client.start(phone_number)
+   ```
 
-- Convert columns like dates to a consistent format.
+3. **Scrape Messages**:
+   - Extract messages from the channels.
 
-  ```python
-  df['date_column'] = pd.to_datetime(df['date_column'], format='%Y-%m-%d')
-  ```
+   ```python
+   from telethon.tl.functions.messages import GetHistoryRequest
 
-### # 1.4. Data Validation
+   async def scrape_channel(channel_name):
+       channel = await client.get_entity(channel_name)
+       messages = await client(GetHistoryRequest(peer=channel, limit=500))
+       return messages
+   ```
 
-Validate data types and ranges to ensure data consistency. For example, ensure that age is a positive number or prices are within a specific range.
+4. **Storing Raw Data**:
+   - Store scraped messages in a local database or files (e.g., CSV or JSON).
 
-- Example of validating values:
+5. **Monitoring and Logging**:
+   - Implement logging to track the scraping process and capture errors.
 
-  ```python
-  df = df[df['age'] > 0]  # Ensure age is positive
-  ```
+   ```python
+   import logging
 
-### # 1.5. Storing Cleaned Data
-
-Once the data is cleaned, it’s time to store it for further processing or analysis.
-
-- You can store the cleaned data in a **local database**, **CSV files**, or in **cloud storage**.
-
-  ```python
-  df.to_csv('cleaned_data.csv', index=False)  # Store in CSV
-  ```
+   logging.basicConfig(level=logging.INFO)
+   logger = logging.getLogger()
+   logger.info('Starting Telegram scraping process')
+   ```
 
 ---
 
-## # 2. DBT for Data Transformation
+## # Task 2 - Data Cleaning and Transformation
 
-### # 2.1. Setting Up DBT
+### # 2.1. Data Cleaning
 
-Install DBT (Data Build Tool) and set up a DBT project to perform transformations on your cleaned data.
+Data cleaning is a critical step to ensure that the data is usable for analysis or transformation.
 
+#### # 2.1.1. Removing Duplicates
+Ensure that there are no duplicate entries in your dataset.
+
+```python
+df.drop_duplicates(inplace=True)
+```
+
+#### # 2.1.2. Handling Missing Values
+Handle missing values by either filling them or removing rows.
+
+```python
+df.fillna(value=0, inplace=True)  # Fill missing values with 0
+df.dropna(inplace=True)  # Drop rows with missing values
+```
+
+#### # 2.1.3. Standardizing Formats
+Ensure that all columns follow a consistent format (e.g., date, case formatting).
+
+```python
+df['date_column'] = pd.to_datetime(df['date_column'], format='%Y-%m-%d')
+```
+
+#### # 2.1.4. Data Validation
+Validate the data to ensure consistency, such as verifying that numerical columns contain valid values.
+
+```python
+df = df[df['age'] > 0]  # Ensure positive values for age
+```
+
+#### # 2.1.5. Storing Cleaned Data
+Store the cleaned data in a desired format (e.g., CSV, database).
+
+```python
+df.to_csv('cleaned_data.csv', index=False)
+```
+
+### # 2.2. DBT for Data Transformation
+
+DBT (Data Build Tool) is used for data transformation through SQL models.
+
+#### # 2.2.1. Setting Up DBT
 1. **Install DBT**:
 
    ```bash
    pip install dbt
    ```
 
-2. **Initialize the DBT project**:
+2. **Initialize the DBT Project**:
 
    ```bash
    dbt init my_project
    ```
 
-### # 2.2. Defining Models
+#### # 2.2.2. Defining DBT Models
 
-Create DBT models for data transformation. DBT models are SQL files that define transformations on your data.
+Create DBT models to transform the data. These models are SQL files that define transformations.
 
-- Example of a DBT model (`my_model.sql`):
+Example DBT model (`my_model.sql`):
 
-  ```sql
-  select
-      column_1,
-      column_2,
-      sum(column_3) as total_column_3
-  from
-      {{ ref('cleaned_data') }}
-  group by
-      column_1, column_2
-  ```
+```sql
+select
+    column_1,
+    column_2,
+    sum(column_3) as total_column_3
+from
+    {{ ref('cleaned_data') }}
+group by
+    column_1, column_2
+```
 
-### # 2.3. Running DBT Models
+#### # 2.2.3. Running DBT Models
 
-Run the DBT models to perform the transformations and load the data into your data warehouse.
+Run the DBT models to perform transformations and load the data into your data warehouse.
 
 ```bash
 dbt run
 ```
 
----
+### # 2.3. Testing and Documentation
 
-## # 3. Testing and Documentation
+#### # 2.3.1. Testing
 
-### # 3.1. Testing
+Use DBT’s testing functionality to ensure data quality and correctness.
 
-Use DBT’s testing features to ensure data quality and validate the transformations.
+```bash
+dbt test
+```
 
-- Run the DBT tests:
+#### # 2.3.2. Documentation
 
-  ```bash
-  dbt test
-  ```
+Generate documentation to provide context and details about your DBT project.
 
-### # 3.2. Documentation
+```bash
+dbt docs generate
+```
 
-Generate documentation for your DBT project to provide context for the transformations.
+Serve the documentation locally:
 
-- Generate documentation:
-
-  ```bash
-  dbt docs generate
-  ```
-
-- Serve the documentation locally:
-
-  ```bash
-  dbt docs serve
-  ```
+```bash
+dbt docs serve
+```
 
 ---
 
-## # 4. Monitoring and Logging
+## # 3. Monitoring and Logging
 
-### # 4.1. Logging
+### # 3.1. Logging
 
-Implement logging to track the scraping process, capture errors, and monitor progress.
+Implement logging to capture important events and errors in the scraping and transformation process.
 
-- Example of basic logging setup in Python:
+```python
+import logging
 
-  ```python
-  import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
 
-  logging.basicConfig(level=logging.INFO)
-  logger = logging.getLogger()
+logger.info("Process started")
+```
 
-  logger.info("Scraping started")
-  ```
+
